@@ -9,6 +9,698 @@
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ /* ABOUT */
+/* END ABOUT */
+/* FONT FAMILY */
+/* END FONT FAMILY */
+/* MAIN */
+/* END MAIN */
+/* BACKGROUND */
+/* END BACKGROUND */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Ruda:wght@700&display=swap");
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 18px rgba(255, 255, 255, 0); } }
+
+/* BUTTONS */
+.btn {
+  background-color: #5a0990;
+  border-color: #5a0990;
+  color: #fff !important;
+  font-family: "Inter", sans-serif; }
+
+.btn:hover {
+  background-color: #8552a7;
+  border-color: #8552a7;
+  color: #003062 !important; }
+
+.btn-enviar {
+  background-color: #5a0990 !important;
+  border-color: #5a0990;
+  color: #fff !important;
+  font-weight: 900 !important;
+  font-family: "Inter", sans-serif;
+  width: 100%; }
+
+.btn-enviar:hover {
+  background-color: #8552a7 !important;
+  border-color: #8552a7;
+  color: #003062 !important; }
+
+.button-modal {
+  color: #062546; }
+
+.button-modal:hover {
+  color: #003062 !important;
+  font-family: "Inter", sans-serif; }
+
+.btn-pulse {
+  font-family: "Inter", sans-serif;
+  animation: pulse 2s infinite 3s cubic-bezier(0.25, 0, 0, 1);
+  box-shadow: 0 0 0 0 white; }
+
+.btn-pulse:hover {
+  animation: none; }
+
+#login-button {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 900 !important; }
+
+#login-button:hover {
+  color: #062546; }
+
+.btn-modalCard {
+  background-color: #062546;
+  color: #fff;
+  margin: 0 auto;
+  width: 100%; }
+
+.btn-modalCard:hover {
+  font-weight: 900 !important; }
+
+/* END BUTTONS */
+/* BODY */
+body {
+  background-image: linear-gradient(to right, #0b8793, #360033);
+  z-index: 0; }
+
+/* MAIN */
+.contenedor__index {
+  background-image: url(../assets/banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  object-fit: cover; }
+
+.logo-lane {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  margin-top: 20%;
+  right: 10vh;
+  opacity: 1; }
+
+.titulo-name {
+  font-size: 100px;
+  color: #ff026b;
+  font-family: "Inter", sans-serif;
+  margin-top: 8%;
+  text-shadow: 2px 2px 4px #000000; }
+
+.subtitulo--modif {
+  position: relative;
+  top: 0;
+  color: #ff026b;
+  font-family: "Ruda", sans-serif;
+  font-size: larger;
+  opacity: 1;
+  margin: 0;
+  text-shadow: 2px 2px 4px #000000; }
+
+#funciona, #info, #como {
+  color: #fff; }
+
+ol {
+  margin-top: 4rem !important; }
+
+.jumbotron {
+  background-color: #fff;
+  color: #fff;
+  margin-top: 50px;
+  margin-bottom: 0px; }
+
+.banner {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding: 0% !important; }
+
+.titulo-index {
+  font-family: "Ruda", sans-serif;
+  font-size: 2.5rem; }
+
+.color-copy {
+  background-color: #029dc3; }
+
+/* NAVBAR */
+.navbar-light {
+  background-color: rgba(7, 8, 90, 0.67);
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+.nav-link {
+  color: #fff !important;
+  font-family: "Inter", sans-serif; }
+
+.nav-link:hover {
+  color: #c5bea2 !important; }
+
+.navbar-toggler {
+  background-color: rgba(54, 55, 151, 0.67) !important; }
+
+.navbar-brand {
+  color: #fff !important; }
+
+.logotipo {
+  height: 30px; }
+
+.lane {
+  text-decoration: none !important; }
+
+/* END NAVBAR */
+.carousel-caption {
+  font-weight: bolder;
+  color: cornsilk; }
+
+.carousel-img {
+  height: 100% !important;
+  object-fit: contain !important; }
+
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%; }
+
+/* FOOTER */
+footer {
+  padding: 0% !important;
+  background: linear-gradient(to left, #2193b0, #6dd5ed);
+  margin-top: 150px;
+  font-family: "Inter", sans-serif;
+  bottom: 0;
+  left: 0; }
+
+.col-item {
+  color: #fff;
+  margin-top: 10px;
+  text-decoration: none; }
+
+.col-item:hover {
+  text-decoration: none;
+  color: #b8206c; }
+
+.fab {
+  color: white; }
+
+.font {
+  font-size: 2rem; }
+
+.footer-address-icon {
+  padding-right: 10px; }
+
+.footer-address-icon:hover {
+  color: #d31966; }
+
+address {
+  color: white;
+  font-family: "Inter", sans-serif; }
+
+.tab-content {
+  padding-top: 20px; }
+
+/* END FOOTER */
+/* TRANSACTIONS */
+/* BANNER, LOGO, SUBTITULO */
+.contenedor__transacciones {
+  background-image: url(../img/services.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  object-fit: cover;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  background-position-y: 100%; }
+
+/* END BANNER, LOGO, SUBTITULO */
+/* ACCORDION */
+.transacciones-titulo {
+  color: #fff;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-family: "Inter", sans-serif; }
+
+.row-content {
+  position: relative;
+  width: 100%; }
+
+.columna {
+  position: relative;
+  transform: translate(50%, 0%); }
+
+.card {
+  background-color: transparent;
+  box-shadow: 10px 10px 10px 10px #00000042; }
+
+.card-body {
+  background-color: transparent;
+  color: #fff; }
+
+#accordion a {
+  text-decoration: none; }
+
+.colapsado {
+  cursor: pointer;
+  color: #280f3f !important; }
+
+.colapsado:hover {
+  color: #110090 !important; }
+
+/* END ACCORDION */
+.titulo-transacciones {
+  font-family: "Ruda", sans-serif;
+  font-size: 3rem; }
+
+/* END TRANSACTIONS */
+/* SERVICES */
+/* BANNER, LOGO, SUBTITULO */
+.contenedor__servicios {
+  background-image: url(../img/services2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  background-position-y: bottom; }
+
+/* END BANNER, LOGO, SUBTITULO */
+.container {
+  padding-top: 50px;
+  color: #fff; }
+
+.billetera {
+  width: 50%; }
+
+.billetera a {
+  text-decoration: none;
+  align-items: center;
+  font-family: "Inter", sans-serif; }
+
+/* CARDS */
+.shadow-lg {
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3) !important; }
+
+.card-title {
+  color: #1769c2; }
+
+.card-text {
+  color: #7a13be; }
+
+.card-subtitle {
+  color: #1769c2;
+  margin-bottom: 10px; }
+
+.span-subtitle {
+  color: #7a13be; }
+
+.card-subtitle--modif {
+  color: #1769c2;
+  margin-bottom: 10px;
+  margin-top: 20px; }
+
+.asterisco {
+  color: darkgrey;
+  font-weight: 600; }
+
+a.a {
+  text-decoration: none !important;
+  color: #fff !important;
+  font-family: "Inter", sans-serif; }
+
+a.a:hover {
+  background-color: #8552a7;
+  border-color: #8552a7;
+  color: #003062 !important;
+  font-weight: 900; }
+
+.card-img-top {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center; }
+
+.card-title--modif {
+  color: #1769c2; }
+
+.rounded {
+  background-color: transparent; }
+
+/* MODAL */
+/* END MODAL */
+/* END CARDS */
+.titulo-servicios {
+  font-family: "Ruda", sans-serif;
+  font-size: 3rem; }
+
+/* END SERVICES */
+/* WALLET */
+/* BANNER, LOGO, SUBTITULO */
+.contenedor__billetera {
+  background-image: url(../img/wallet.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  object-fit: cover;
+  position: relative;
+  background-position-y: 60%; }
+
+/* END BANNER, LOGO, SUBTITULO */
+.titulo-wallet {
+  font-family: "Ruda", sans-serif;
+  margin: 2rem; }
+
+.subtitulo--modificado {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  color: #ff026b;
+  font-family: "Ruda", sans-serif;
+  margin-top: 60rem;
+  font-size: 3rem;
+  opacity: 1;
+  text-shadow: 2px 2px 4px #000000; }
+
+.container-info {
+  margin-top: 10px;
+  margin-bottom: 20px; }
+
+.app_billetera a {
+  text-decoration: none;
+  align-items: center; }
+
+.app_billetera {
+  width: 50%;
+  margin-top: 30px; }
+
+.subtitulo--modificado {
+  color: #ff0180;
+  font-family: "Ruda", sans-serif;
+  margin-left: 50px;
+  font-size: larger; }
+
+a.link-text {
+  text-decoration: none !important;
+  color: #fff !important;
+  font-family: "Inter", sans-serif; }
+
+a.link-text:hover {
+  background-color: #8552a7;
+  border-color: #8552a7;
+  color: #003062 !important;
+  font-weight: 900; }
+
+.tituloPrincipal {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700; }
+
+.textoP, .ul {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  margin-bottom: 2rem; }
+
+.pAsterisco {
+  color: #8c8d8d;
+  margin-bottom: 2rem; }
+
+/* END WALLET */
+/* APPBILLETERA */
+/* MODAL */
+.modal-container {
+  height: 100%;
+  width: 50%; }
+
+.modal-body {
+  height: 100%; }
+
+.modal-footer {
+  background-color: #fff; }
+
+/* END MODAL */
+.titulo-billetera {
+  font-family: "Ruda", sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
+
+.contenedor__app {
+  background-image: url(../img/portadaEmpresasTarjetas.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  object-fit: cover;
+  position: relative; }
+
+.wallet_img {
+  width: 70%; }
+
+.section {
+  color: #fff;
+  margin-left: 40px;
+  margin-top: 40px; }
+
+.information {
+  margin-top: 10rem;
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem; }
+
+.contenedor-p {
+  margin-top: 2rem; }
+
+.info-lista {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: "Inter", sans-serif; }
+
+.titulo-cent {
+  font-family: "Inter", sans-serif; }
+
+/* END APPBILLETERA */
+/* CONTACTUS */
+.contenedor__contacto {
+  background-image: url(../img/contacto.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  object-fit: cover;
+  position: relative;
+  background-position-y: 50%; }
+
+.container__feed {
+  font-family: "Inter", sans-serif; }
+
+.feedTtiulo {
+  color: #fff; }
+
+/* END CONTACTUS */
+/* ABOUT */
+/* BANNER, LOGO, SUBTITULO */
+.contenedor__nosotros {
+  background-image: url(../img/about.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  object-fit: cover;
+  position: relative;
+  background-position-y: 50%; }
+
+.container__2 {
+  font-family: "Inter", sans-serif; }
+
+/* END BANNER, LOGO, SUBTITULO */
+.image {
+  width: 80%; }
+
+.p {
+  margin-top: 5rem; }
+
+/* END ABOUT */
+/* MEDIA QUERIES */
+@media (min-width: 500px) {
+  .modal-dialog {
+    max-width: 400px; }
+  .modal-content {
+    padding: 1rem; }
+  .modal-header {
+    margin-top: -1.5rem; }
+  .form-title {
+    margin: -2rem 0rem 2rem; }
+  .btn-round {
+    border-radius: 3rem; }
+  .delimiter {
+    padding: 1rem; }
+  .social-buttons {
+    margin: 0 0.5rem 1rem; }
+  .signup-section {
+    padding: 0.3rem 0rem; } }
+
+@media (max-width: 576px) {
+  .columna {
+    transform: translate(-0.2%, 0%);
+    margin-left: 28px; }
+  .titulo-index {
+    font-size: 1rem; }
+  .titulo-transacciones {
+    font-size: 1rem; }
+  .transacciones-titulo {
+    font-size: 1rem; }
+  .titulo-servicios {
+    font-size: 1rem; }
+  .titulo-billetera {
+    font-size: 1rem;
+    text-align: center; } }
+
+@media (max-width: 600px) {
+  .image {
+    width: 80%; }
+  .contenedor__servicios {
+    background-image: url(../img/contenedor_servicios.jpg);
+    background-size: cover;
+    background-position-x: right;
+    height: 100%; }
+  .subtitulo--modif {
+    opacity: 0; }
+  .contenedor__app {
+    background-image: url(../img/bg-sub-servicio.jpg);
+    background-size: inherit;
+    background-position-x: right;
+    height: 100%; }
+  .subtitulo--modificado {
+    opacity: 0; }
+  .logo-img {
+    margin-bottom: 40px; }
+  .billetera {
+    width: 80%; }
+  .app_billetera {
+    width: 80%; }
+  .wallet_img {
+    width: 80%;
+    margin: 0 auto; }
+  .information {
+    font-size: 1.5rem; }
+  .section {
+    margin-left: 10px;
+    margin-top: 40px; }
+  .contenedor-p {
+    margin-right: 5px; }
+  .titulo-cent {
+    margin-top: 40px;
+    margin-bottom: 40px; }
+  .contenedor__transacciones {
+    background-image: url(../img/bg-cuentas.jpg);
+    background-size: cover;
+    background-position-x: right;
+    object-fit: cover;
+    height: 100%; }
+  .titulo-name {
+    margin: 0.5rem; }
+  .contenedor__contacto {
+    background-image: url(../img/contacto.jpg);
+    background-size: cover;
+    background-position-x: right;
+    height: 100%; }
+  .contenedor__billetera {
+    background-image: url(../img/wallet2.jpg);
+    background-size: cover;
+    background-position-x: center;
+    object-fit: cover; }
+  .contenedor__nosotros {
+    background-image: url(../img/nosotros.jpg);
+    background-size: cover;
+    background-position-x: left;
+    height: 100%; }
+  .contenedor__index {
+    background-image: url(../img/banner2.jpg);
+    background-size: cover;
+    background-position-x: 70%;
+    height: 100%; }
+  .subtitulo--modif {
+    opacity: 0; }
+  .titulo-name {
+    font-size: 50px;
+    margin: 0 auto; }
+  .contenedor__app {
+    background-image: url(../img/app.png);
+    background-size: cover;
+    background-position: center center;
+    height: 100%; }
+  .titulo-wallet {
+    font-size: 20px;
+    text-align: center; }
+  .tituloPrincipal {
+    font-size: 1.5rem; }
+  .titulo {
+    margin: 0 auto !important; } }
+
+@media (min-width: 601px) and (max-width: 800px) {
+  .contenedor__index {
+    background-image: url(../img/banner2.jpg);
+    background-size: cover;
+    background-position-x: 70%;
+    height: 100%; }
+  .titulo-name {
+    font-size: 50px;
+    margin-right: 8rem; }
+  .contenedor__app {
+    background-image: url(../img/app.png);
+    background-size: cover;
+    background-position: center;
+    height: 100%; }
+  .contenedor__transacciones {
+    background-size: cover;
+    background-position-x: right;
+    object-fit: cover;
+    height: 100%; } }
+
+@media (min-width: 700px) {
+  .btn-enviar {
+    width: auto; } }
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .contenedor__servicios {
+    background-image: url(../img/servicios.jpg);
+    background-size: cover;
+    background-position-x: right; } }
+
+@media (min-width: 768px) and (max-width: 1022px) {
+  .titulo-name {
+    font-size: 100px !important;
+    margin-right: 5rem; } }
+
+@media (min-width: 1023px) and (max-width: 1438px) {
+  .titulo-name {
+    margin-bottom: 4rem;
+    font-size: 8rem !important;
+    margin-left: 40rem; }
+  .subtitulo--modif {
+    font-size: 2rem;
+    top: 2px; }
+  .contenedor__index {
+    background-size: cover;
+    background-position-x: 70%;
+    height: 100%; } }
+
+@media (max-width: 1441px) {
+  img.logo-lane {
+    display: none !important; }
+  .subtitulo--modificado {
+    font-size: 3rem !important;
+    margin-bottom: 5rem; } }
+
+@media (min-width: 1439px) {
+  .titulo-name {
+    font-size: 10rem !important;
+    margin-left: 40rem; }
+  .contenedor__transacciones {
+    background-size: cover;
+    background-position-x: center;
+    object-fit: cover; } }
+
+/* END MEDIA QUERIES */
  */
 :root {
   --bs-blue: #0d6efd;

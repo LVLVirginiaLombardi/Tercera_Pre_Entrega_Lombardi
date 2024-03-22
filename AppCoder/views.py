@@ -1,146 +1,186 @@
-from typing import List
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 
-from django.shortcuts import redirect, render, HttpResponse
-from django.http import HttpResponse
-from AppCoder.models import Curso, Profesor
-from AppCoder.forms import CursoFormulario, ProfesorFormulario, UserRegisterForm,UserEditForm
+from .models import *
+from .forms import *
+# from typing import List
+
+# from django.shortcuts import redirect, render, HttpResponse
+# from django.http import HttpResponse
+# from AppCoder.models import Curso, Profesor
+# from AppCoder.forms import CursoFormulario, ProfesorFormulario, UserRegisterForm,UserEditForm
 
 from django.views.generic import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+# from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
 from django.contrib.auth.models import User
 
 
-#Para la prueba unitaria
-import string
-import random
+# #Para la prueba unitaria
+# import string
+# import random
 
 
 #Para el login
 
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.views import PasswordChangeView
 
 #Decorador por defecto
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-from django.views.generic.base import TemplateView
-
-
-
-
-
+# from django.views.generic.base import TemplateView
 
 
 # Create your views here.
 
-def curso(request):
+# def curso(request):
 
-      curso =  Curso(nombre="Desarrollo web", camada="19881")
-      curso.save()
-      documentoDeTexto = f"--->Curso: {curso.nombre}   Camada: {curso.camada}"
+#       return render(request, "AppCoder/index.html")
 
 
-      return HttpResponse(documentoDeTexto)
-
-# @login_required
 def inicio(request):
       
-      return render(request, "AppCoder/inicio.html")
+      return render(request, "AppCoder/index.html")
 
-
-
-def estudiantes(request):
-
-      return render(request, "AppCoder/estudiantes.html")
-
-
+# @login_required
 def entregables(request):
 
       return render(request, "AppCoder/entregables.html")
 
+# @login_required
+def cursos(request): 
+      contexto = {'cursos': Curso.objects.all().order_by("ID")}
+      return render(request, "AppCoder/cursos.html", contexto)
+      
+# @login_required    
+def cursoCreate(request):
 
-def cursos(request):
-
-      if request.method == 'POST':
-
-            miFormulario = CursoFormulario(request.POST) #aquí mellega toda la información del html
-
-            print(miFormulario)
-
-            if miFormulario.is_valid:   #Si pasó la validación de Django
-
-                  informacion = miFormulario.cleaned_data
-
-                  curso = Curso (nombre=informacion['curso'], camada=informacion['camada']) 
-
+      if request.method == "POST":
+            miFormulario = CursoFormulario(request.POST) 
+            if miFormulario.is_valid():   
+                  curso_nombre = miFormulario.cleaned_data.get("nombre")
+                  curso_camada = miFormulario.cleaned_data.get("camada")
+                  curso = Curso(nombre=curso_nombre, camada=curso_camada) 
                   curso.save()
-
-                  return render(request, "AppCoder/inicio.html") #Vuelvo al inicio o a donde quieran
+                  return redirect(reverse_lazy('cursos'))
+                  # return render(request, "AppCoder/inicio.html") 
 
       else: 
+            miFormulario = CursoFormulario() 
 
-            miFormulario= CursoFormulario() #Formulario vacio para construir el html
+      return render(request, "AppCoder/curso_form.html", {"miFormulario": miFormulario})
 
-      return render(request, "AppCoder/cursos.html", {"miFormulario":miFormulario})
+# @login_required
+def cursoUpdate(request, id_curso):
+      curso = Curso.objects.get(id=id_curso)
+      if request.method == "POST":
+            miFormulario = CursoFormulario(request.POST)
+            if miFormulario.is_valid():
+                  curso.nombre = miFormulario.cleaned_data.get("nombre")
+                  curso.camada = miFormulario.cleaned_data.get("camada")
+                  curso.save()
+                  return redirect(reverse_lazy('cursos'))
+            
+      else:
+            miFormulario = CursoFormulario(initial={'nombre': curso.nombre, 'camada': curso.camada})
+      
+      return render(request, "AppCoder/curso_form.html", {"miFormulario": miFormulario})
 
+# @login_required
+def cursoDelete(request, id_curso):
+      curso = Curso.objects.get(id=id_curso)
+      curso.delete()
+      return redirect(reverse_lazy('cursos'))        
 
-
-
+# @login_required
 def profesores(request):
+      contexto = {'profesores': Profesor.objects.all().order_by("ID")}
+      return render(request, "AppCoder/profesores.html", contexto)
 
-      if request.method == 'POST':
-
-            miFormulario = ProfesorFormulario(request.POST) #aquí mellega toda la información del html
-
-            print(miFormulario)
-
-            if miFormulario.is_valid:   #Si pasó la validación de Django
-
-                  informacion = miFormulario.cleaned_data
-                  """
-                  #CASO DE PRUEBA
-                  KEY_LEN = 20
-                  keylistNombre = [random.choice((string.ascii_letters + string.digits)) for i in range(KEY_LEN)]
-                  nombrePrueba = "".join(keylistNombre)
-
-                  print(f"---->Pueba con: {nombrePrueba} ")
-                  """
-                  profesor = Profesor (nombre=informacion['nombre'], apellido=informacion['apellido'],
-                   email=informacion['email'], profesion=informacion['profesion']) 
-
+# @login_required
+def profesoresCreate(request):
+      if request.method == "POST":
+            miFormulario = ProfesorFormulario(request.POST)
+            if miFormulario.is_valid():
+                  profesor_nombre = miFormulario.cleaned_data.get("nombre")
+                  profesor_apellido = miFormulario.cleaned_data.get("apellido")
+                  profesor_email = miFormulario.cleaned_data.get("email")
+                  profesor_profesion = miFormulario.cleaned_data.get("profesion")
+                  
+                  profesor = Profesor(
+                        nombre=profesor_nombre, 
+                        apellido=profesor_apellido, 
+                        email=profesor_email, 
+                        profesion=profesor_profesion) 
                   profesor.save()
-
-                  return render(request, "AppCoder/inicio.html") #Vuelvo al inicio o a donde quieran
-
+                  return redirect(reverse_lazy('profesores'))
+            
       else: 
-
-            miFormulario= ProfesorFormulario() #Formulario vacio para construir el html
+            miFormulario = ProfesorFormulario() 
 
       return render(request, "AppCoder/profesores.html", {"miFormulario":miFormulario})
 
+# @login_required
+def profesorUpdate(request, id_profesor):
+      profesor = Profesor.objects.get(id=id_profesor)
+      if request.method == "POST":
+            miFormulario = ProfesorFormulario(request.POST)
+            if miFormulario.is_valid():
+                  profesor.nombre = miFormulario.cleaned_data.get("nombre")
+                  profesor.apellido = miFormulario.cleaned_data.get("apellido")
+                  profesor.email = miFormulario.cleaned_data.get("email")
+                  profesor.profesion = miFormulario.cleaned_data.get("profesion")
+                  profesor.save()
+                  return redirect(reverse_lazy('profesores'))
+      
+      else:
+            miFormulario = ProfesorFormulario(initial= {'nombre': profesor.nombre,
+                                                        'apellido': profesor.apellido,
+                                                        'email': profesor.email,
+                                                        'profesion': profesor.profesion
+                                                        })
+      
+      return render(request, "AppCoder/profesores.html", {"miFormulario":miFormulario})
+
+# @login_required
+def profesorDelete(request, id_profesor):
+      profesor = Profesor.objects.get(id=id_profesor)
+      profesor.delete()
+      return redirect(reverse_lazy('profesores'))
+
+      
+# def estudiantes(request):
+
+#       return render(request, "AppCoder/estudiantes.html")
 
 
+# @login_required
+def buscarCursos(request):
+      if  request.GET["buscar"]:
+            patron = request.GET["buscar"]
+            cursos = Curso.objects.filter(nombre__icontains=patron)
+            contexto = {"cursos": cursos}
+            return render(request, "AppCoder/cursos.html", contexto)
 
+            # #respuesta = f"Estoy buscando la camada nro: {request.GET['camada'] }" 
+            # camada = request.GET['camada'] 
+            # cursos = Curso.objects.filter(camada__icontains=camada)
+            
+      contexto = {'cursos': Curso.objects.all()}
+      return render(request, "AppCoder/cursos.html", contexto)  
 
+      # else: 
 
-def buscar(request):
+	#       respuesta = "No enviaste datos"
 
-      if  request.GET["camada"]:
-
-            #respuesta = f"Estoy buscando la camada nro: {request.GET['camada'] }" 
-            camada = request.GET['camada'] 
-            cursos = Curso.objects.filter(camada__icontains=camada)
-
-            return render(request, "AppCoder/inicio.html", {"cursos":cursos, "camada":camada})
-
-      else: 
-
-	      respuesta = "No enviaste datos"
-
-      #No olvidar from django.http import HttpResponse
-      #return HttpResponse(respuesta)
-      return render(request, "AppCoder/inicio.html", {"respuesta":respuesta})
+      # #No olvidar from django.http import HttpResponse
+      # #return HttpResponse(respuesta)
+      # return render(request, "AppCoder/inicio.html", {"respuesta":respuesta})
 
 
 
