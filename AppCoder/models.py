@@ -14,10 +14,6 @@ class Curso(models.Model):
     def __str__(self):
         return f"{self.nombre}"
 
-    # def __str__(self):
-    #     return f"Curso: {self.nombre} - Camada: {self.camada}"
-
-
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=60)
     apellido = models.CharField(max_length=60)
@@ -50,8 +46,3 @@ class Entregable(models.Model):
     
     def __str__(self):
         return f"{self.nombre}"
-
-
-   
-
-

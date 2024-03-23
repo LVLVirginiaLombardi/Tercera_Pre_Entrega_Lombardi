@@ -20,33 +20,33 @@
     <link href="{%static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
 
 </head>
-    
     <body>
         <header>
             <!-- NAVBAR -->
             <nav class="navbar navbar-expand-md navbar-light fixed-top">
-                {% comment %} <a class="navbar-brand" href="./inicio.html"><img src="{% static 'AppCoder/assets/psicodelico.jpg' %}" alt="Logotipo" class="logotipo"></a> {% endcomment %}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls=navbarNavDropdown aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Profesores' %}">Profesores</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Cursos' %}">Cursos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Estudiantes' %}">Estudiantes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Entregables' %}">Entregables</a></li>
-                    </ul>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'cursos' %}">Cursos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'profesores' %}">Profesores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'estudiantes' %}">Estudiantes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'entregables' %}">Entregables</a></li>
+                        <p style="color:green">[{{user.username}}]</p>
+                    <a class="btn btn-success" href="{% url 'perfil' %}">Perfil</a>  
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>  
                     <span class="navbar-text">
-                        {% if not request.user.is_authenticated %}
-                        <a class="btn btn-primary" href="{% url 'Login' %}"><span class="fa fa-sign-in login"></span>Iniciar Sesión</a>
-                        {% endif %}
-                    </span>
-                        
-                    {% if request.user.is_authenticated %}
-                        <p class="text-muted small mb-4 mb-lg-0"> Hola, {{user.username}}.</p>
-                    {% endif %}
+                    {% else %}
+                        <a class="btn btn-primary" href="{% url 'login' %}"><span class="fa fa-sign-in login"></span>Iniciar Sesión</a> 
+                        <a class="btn btn-success" href="{% url 'register' %}">Registrarse</a> 
+                        </span>
+                    {% endif %}                   
+                    </ul>
+                    
                 </div>
             </nav>
             <!-- END NAVBAR -->
@@ -64,10 +64,12 @@
                 </div>
             </div>
             <!-- END BANNER, LOGO, SUBTITULO --> 
+        </main>
+        
         {% block contenidoQueCambia %}
 
         {% endblock %}
-        </main>
+       
 
 
         
