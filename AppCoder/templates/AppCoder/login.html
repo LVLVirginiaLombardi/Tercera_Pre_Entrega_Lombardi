@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+    <body>
 
 
-    <form action="" method="POST">
+        <form action="" method="POST">
 
-        {% csrf_token %}
+            {% csrf_token %}
 
-        {{form.as_p}}
+            {{form.as_p}}
 
-        <button type="submit"> Iniciar Sesión</button>
+            <button type="submit">Iniciar Sesión</button>
 
+        </form>
 
-    </form>
-
-
-    
-</body>
+    </body>
 </html>

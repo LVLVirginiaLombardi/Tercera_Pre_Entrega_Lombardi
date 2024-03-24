@@ -1,31 +1,72 @@
-{% extends "AppCoder/padre.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
 
-{% load static %}
+    {% load static %}
 
-{% block contenidoQueCambia %}
-
-
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Formulario - Editar Perfil</h1>
-    <h1>De {{usuario}}</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />  {% endcomment %}
+    <meta name="description" content="" />
+    <meta name="author" content="Lilian virginia Lombardi López" />
+    <title>Editar Perfil</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{%static 'AppCoder/assets/favicon.ico' %}" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{%static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-md navbar-light fixed-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls=navbarNavDropdown aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'cursos' %}">Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profesores' %}">Profesores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'estudiantes' %}">Estudiantes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'entregables' %}">Entregables</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- END NAVBAR -->
+    </header>
+    <div class="container text-center feedTtiulo">
+        <h1>Editar Perfil</h1>
+    </div>
+    <div class="container container__feed">
+        {% block contenido %}
+        <form action="" method="POST">
+            
+            {% csrf_token %}
+            
+            {{ form.as_table }}
     
+            <button type="submit " class="btn btn-enviar btn-pulse">
+                Enviar
+            </button>
+            {% comment %} <input type="submit", value="Enviar"> {% endcomment %}
+    
+        </form>
+        {% endblock contenido %}
+    </div>
 
-    <form action="" method="POST">{% csrf_token %}
-
-        <!-- Acá está la magia de Django-->
-        
-        <table>
-
-            {{ miFormulario.as_table }}
-
-
-        </table>
-
-
-        <input type="submit", value="Enviar">
-
-    </form>
-
-  
-
-{% endblock %}
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'AppCoder/js/scripts.js' %}"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+</html>

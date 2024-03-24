@@ -30,7 +30,7 @@ def entregables(request):
 
 @login_required
 def cursos(request): 
-      contexto = {'cursos': Curso.objects.all().order_by("ID")}
+      contexto = {'cursos': Curso.objects.all().order_by("id")}
       
       return render(request, "AppCoder/cursos.html", contexto)
 
@@ -79,7 +79,7 @@ def cursoDelete(request, id_curso):
 
 @login_required
 def profesores(request):
-      contexto = {'profesores': Profesor.objects.all().order_by("ID")}
+      contexto = {'profesores': Profesor.objects.all().order_by("id")}
       return render(request, "AppCoder/profesores.html", contexto)
 
 
@@ -152,63 +152,6 @@ def encontrarCursos(request):
       return render(request, "AppCoder/cursos.html", contexto)  
 
 
-# def leerProfesores(request):
-
-#       profesores = Profesor.objects.all() #trae todos los profesores
-
-#       contexto= {"profesores":profesores} 
-
-#       return render(request, "AppCoder/leerProfesores.html",contexto)
-
-
-
-# def eliminarProfesor(request, profesor_nombre):
-
-#       profesor = Profesor.objects.get(nombre=profesor_nombre)
-#       profesor.delete()
-      
-#       #vuelvo al menú
-#       profesores = Profesor.objects.all() #trae todos los profesores
-
-#       contexto= {"profesores":profesores} 
-
-#       return render(request, "AppCoder/leerProfesores.html",contexto)
-
-
-
-# def editarProfesor(request, profesor_nombre):
-
-#       #Recibe el nombre del profesor que vamos a modificar
-#       profesor = Profesor.objects.get(nombre=profesor_nombre)
-
-#       #Si es metodo POST hago lo mismo que el agregar
-#       if request.method == 'POST':
-
-#             miFormulario = ProfesorFormulario(request.POST) #aquí mellega toda la información del html
-
-#             print(miFormulario)
-
-#             if miFormulario.is_valid:   #Si pasó la validación de Django
-
-#                   informacion = miFormulario.cleaned_data
-
-#                   profesor.nombre = informacion['nombre']
-#                   profesor.apellido = informacion['apellido']
-#                   profesor.email = informacion['email']
-#                   profesor.profesion = informacion['profesion']
-
-#                   profesor.save()
-
-#                   return render(request, "AppCoder/inicio.html") #Vuelvo al inicio o a donde quieran
-#       #En caso que no sea post
-#       else: 
-#             #Creo el formulario con los datos que voy a modificar
-#             miFormulario= ProfesorFormulario(initial={'nombre': profesor.nombre, 'apellido':profesor.apellido , 
-#             'email':profesor.email, 'profesion':profesor.profesion}) 
-
-#       #Voy al html que me permite editar
-#       return render(request, "AppCoder/editarProfesor.html", {"form":miFormulario, "profesor_nombre":profesor_nombre})
-
 
 class EstudianteList(LoginRequiredMixin, ListView):
       model = Estudiante
@@ -236,6 +179,7 @@ def login_request(request):
 
             if user is not None:
                   login(request, user)
+                  
                   return render(request, "AppCoder/padre.html")
             
             else:
@@ -280,9 +224,9 @@ def editarPerfil(request):
       return render(request, "AppCoder/editarPerfil.html", {"form": miFormulario} )
 
 
-class CambiarClave(LoginRequiredMixin, PasswordChangeView):
-      template_name = "AppCoder/password_reset.html"
-      success_url = reverse_lazy("inicio")
+# class CambiarClave(LoginRequiredMixin, PasswordChangeView):
+#       template_name = "AppCoder/password_reset.html"
+#       success_url = reverse_lazy("inicio")
 
 
 

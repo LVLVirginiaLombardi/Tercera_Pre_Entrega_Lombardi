@@ -19,12 +19,4 @@ class Migration(migrations.Migration):
             name='profesor',
             options={'ordering': ['nombre', 'apellido'], 'verbose_name': 'Profesor', 'verbose_name_plural': 'Profesores'},
         ),
-        migrations.CreateModel(
-            name='Avatar',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('imagen', models.ImageField(upload_to='avatares')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
     ]

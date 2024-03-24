@@ -38,8 +38,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='AppCoder/logout.html'), name = "logout"),
     path('register/', register, name = "register"),
     
-    path('perfil/', editarPerfil, name="perfil"),
-    path('<int:pk>/password/', CambiarClave.as_view(), name="password_reset"),
+    path('editarPerfil/', editarPerfil, name="editarPerfil"),
+    # path('<int:pk>/password/', CambiarClave.as_view(), name="password_reset"),
     
     #path('cursoFormulario', cursoFormulario, name="CursoFormulario"),
     #path('profesorFormulario', profesorFormulario, name="ProfesorFormulario"),

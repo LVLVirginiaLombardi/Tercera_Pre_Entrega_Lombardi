@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            {% comment %} {% block titulo %} {% endcomment %}
+            <title>Estudiante (formulario)</title>
+            {% comment %} <h1 class="mb-5">Estudiante (formulario)</h1> {% endcomment %}
+            {% comment %} {% endblock titulo %} {% endcomment %}
+    </head>
+        
+    <body>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% comment %} <table> {% endcomment %}
+                {{ form.as_table }}
+            {% comment %} </table> {% endcomment %}
+            {% comment %} <input type="submit" value="Guardar"> {% endcomment %}
+            <button type="submit">Guardar</button>
+        </form>
+
+    </body>
+</html>
