@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso</title>
-</head>
-<body>
+{% extends "AppCoder/padre.html" %}
 
-    <form method="post">
+{% block titulo %}
+<h1 class="mb-5">Cursos (formulario)</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+    {% comment %} <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Enviar" />
-    </form>
+    </form> {% endcomment %}
 
-</body>
-</html>
+    <form action="" method="post">
+        {% csrf_token %}
+        <!-- Comentario  -->
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Guardar">
+    </form>
+    
+{% endblock contenido %}
+        
